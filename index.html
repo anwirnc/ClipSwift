@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipSwift - Smart Clipboard Manager</title>
+    <meta name="description" content="ClipSwift is the ultimate clipboard manager for Android. Organize your clipboard history, search smartly, and paste faster. Download now on Google Play!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 60px 0;
+            background: white;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .google-play-badge {
+            width: 180px;
+            height: 60px;
+            border-radius: 8px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .features-section {
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .screenshots-section {
+            background: #f8f9fa;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .screenshot-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot-image {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .screenshot-label {
+            padding: 20px;
+            background: white;
+            text-align: center;
+            font-weight: 600;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid,
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ClipSwift</h1>
+            <p class="subtitle">Swift & Smart Clipboard Manager</p>
+            <img src="https://via.placeholder.com/1200x600/667eea/ffffff?text=ClipSwift+Hero+Image" alt="ClipSwift Hero Image" class="hero-image">
+        </div>
+    </header>
+
+    <section class="download-section">
+        <div class="container">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: #2c3e50;">Available Now on Google Play</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px; color: #666; font-size: 1.1rem;">
+                Download ClipSwift for free and supercharge your clipboard experience. Rated Everyone (0+) with non-intrusive ads.
+            </p>
+            <a href="https://play.google.com/store/apps/details?id=com.aiwarinr.clipswift" class="download-btn" target="_blank">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+                     alt="Get it on Google Play" class="google-play-badge">
+            </a>
+            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">Size: ~5MB | Updated: September 2025</p>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose ClipSwift?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Unlimited Clipboard History</h3>
+                    <p>Store and access unlimited clips from text, links, images, and more. Never lose that important note again!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Smart Search & Categorization</h3>
+                    <p>Quickly search through your history with powerful filters and auto-categorize clips by type (URLs, code, emails).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Paste Shortcuts</h3>
+                    <p>Create custom shortcuts for frequent pastes – one-tap access to your favorites.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy-First Design</h3>
+                    <p>All data stays on your device – no cloud syncing required unless you opt-in. Secure and ad-supported.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Cross-App Integration</h3>
+                    <p>Works flawlessly with messaging apps, browsers, documents, and productivity tools.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightweight & Fast</h3>
+                    <p>Minimal battery drain with a sleek, intuitive UI that loads in milliseconds.</p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 40px 0 20px; color: #2c3e50;">Feature Comparison</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Benefit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>History Sync</strong></td>
+                        <td>Access clips across sessions without hassle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pin & Edit Clips</strong></td>
+                        <td>Lock important items and tweak them on the fly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Export/Import</strong></td>
+                        <td>Backup your history to any file format</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dark Mode Support</strong></td>
+                        <td>Eye-friendly for late-night editing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="screenshots-section">
+        <div class="container">
+            <h2 class="section-title">See ClipSwift in Action</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <div class="screenshot-image" style="background: linear-gradient(45deg, #f0f0f0, #e0e0e0); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #666;">
+                        📋 Clipboard History
+                    </div>
+                    <div class="screenshot-label">Browse your recent clips with thumbnails and timestamps</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-image" style="background: linear-gradient(45deg, #e3f2fd, #bbdefb); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #1976d2;">
+                        🔍 Smart Search
+                    </div>
+                    <div class="screenshot-label">Find exactly what you need in seconds</div>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-image" style="background: linear-gradient(45deg, #f3e5f5, #e1bee7); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #7b1fa2;">
+                        ⚙️ Settings
+                    </div>
+                    <div class="screenshot-label">Tailor the app to your preferences</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px; font-style: italic; color: #666;">
+                *These are placeholder images. Replace with actual app screenshots for production.
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Join Thousands of Satisfied Users</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; opacity: 0.95;">
+                ClipSwift is trusted by users worldwide for its reliability and speed.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span>Downloads</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0+</span>
+                    <span>Age Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.5⭐</span>
+                    <span>Average Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5MB</span>
+                    <span>File Size</span>
+                </div>
+            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.aiwarinr.clipswift" class="btn" target="_blank" style="margin-top: 30px; display: inline-block;">
+                Download Now
+            </a>
+        </div>
+    </section>
+
+    <section class="about-section" style="background: white; padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title">About the Developer</h2>
+            <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: #666; line-height: 1.8;">
+                ClipSwift is developed by <strong>AI WarinR</strong>, a passionate team focused on innovative mobile utilities. 
+                We're committed to user feedback and regular updates to bring you the best experience possible.
+            </p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://x.com/aiwarinr" class="btn" target="_blank" style="background: #1da1f2; margin-right: 10px;">Follow on X</a>
+                <a href="mailto:support@aiwarinr.com" class="btn" style="background: #28a745;">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h3 style="margin-bottom: 20px;">ClipSwift</h3>
+            <p style="margin-bottom: 20px; opacity: 0.8;">Because copying shouldn't be a chore.</p>
+            
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/faq">FAQ</a>
+                <a href="mailto:support@aiwarinr.com">Support</a>
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">
+                © 2025 AI WarinR. All rights reserved. | 
+                <a href="https://play.google.com/store/apps/details?id=com.aiwarinr.clipswift" style="color: #bdc3c7;">View on Google Play</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and screenshots
+        document.querySelectorAll('.feature-card, .screenshot-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
